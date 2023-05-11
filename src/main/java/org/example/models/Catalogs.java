@@ -19,6 +19,12 @@ public class Catalogs {
     public void addGoods(Goods goods){
         this.goods.add(goods);
     }
+    public void deleteGoods(Goods goods){
+        if(this.goods.contains(goods)){
+            this.goods.remove(goods);
+        };
+    }
+
     @Override
     public String toString() {
         return "Каталог " + name + " {\n"

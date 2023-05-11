@@ -53,6 +53,11 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        // check add/delete goods to Catalog
+        Goods testGoods = new Goods(26, "Рубашка женская оверсайз", 3800, 12);
+        womenClothes.addGoods(testGoods);
+        System.out.println(womenClothes.toString());
+        womenClothes.deleteGoods(testGoods);
+        System.out.println(womenClothes.toString());
     }
 }
