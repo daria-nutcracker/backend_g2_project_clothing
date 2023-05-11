@@ -16,6 +16,9 @@ public class Catalogs {
         this.goods = goods;
     }
 
+    public Catalogs() {
+    }
+
     public int getId() {
         return id;
     }
