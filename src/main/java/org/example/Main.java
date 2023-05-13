@@ -54,12 +54,20 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        // check add/delete goods to Catalog
+
         Goods testGoods = new Goods(26, "Рубашка женская оверсайз", 3800, 12);
         womenClothes.addGoods(testGoods);
         System.out.println(womenClothes.toString());
         womenClothes.deleteGoods(testGoods);
         System.out.println(womenClothes.toString());
+
+        // Детская одежда
+        Goods girlDressGoods = new Goods(1, "Платье для девочки", 2000, 7);
+        Goods boypantsGoods = new Goods(2, "Штанишки для мальчика", 1500, 12);
+        Goods girlcoatGoods = new Goods(3, "Пальто детское демисезонное для девочки", 3500, 5);
+        Goods boyt_shirtGoods = new Goods(4, "Футболка детская для мальчика", 800, 10);
+        Goods boyjacketGoods = new Goods(5, "Куртка детская утепленная для мальчика", 4500, 3);
+
     }
 
     public void createGoods (Catalogs catalogName, int id, String name, double price, int count) {
