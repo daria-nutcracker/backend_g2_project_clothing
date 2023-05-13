@@ -6,7 +6,7 @@ import java.util.Random;
 /**
  Класс - реализация сущности пользователей
  */
-public class User {
+public class Users {
     private int id;
     private String firstName;
     private String lastName;
@@ -14,10 +14,10 @@ public class User {
     private char gender;
     private LocalDate birthDate;
 
-    public User() {
+    public Users() {
     }
 
-    public User(int id, String firstName, String lastName, String email, char gender, LocalDate birthDate) {
+    public Users(int id, String firstName, String lastName, String email, char gender, LocalDate birthDate) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -75,7 +75,7 @@ public class User {
     }
 }
 
-public class Main {
+/*public class Main {
     public static void main(String[] args) {
         User user1 = new User(1, "Митя", "Фомин", "fomin@mail.com", 'M', LocalDate.of(1990, 5, 15));
         User user2 = new User(2, "Катя", "Иванова", "kate@mail.com", 'F', LocalDate.of(1995, 9, 22));
@@ -146,3 +146,4 @@ public class Main {
         }
     }
 }
+*/
