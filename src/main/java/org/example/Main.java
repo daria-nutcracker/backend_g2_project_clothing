@@ -68,6 +68,33 @@ public class Main {
         Goods boyt_shirtGoods = new Goods(4, "Футболка детская для мальчика", 800, 10);
         Goods boyjacketGoods = new Goods(5, "Куртка детская утепленная для мальчика", 4500, 3);
 
+        // Женская одежда
+        Goods eveningDressGoods = new Goods(6, "Платье женское вечернее", 7000, 4);
+        Goods cocktailDressGoods = new Goods(7, "Платье женское коктейльное", 5000, 6);
+        Goods officeDressGoods = new Goods(8, "Платье женское офисное", 3500, 8);
+        Goods blouseGoods = new Goods(9, "Блузка женская", 2500, 10);
+        Goods skirtGoods = new Goods(10, "Юбка женская", 3000, 7);
+
+        // Мужская одежда
+        Goods t_shirtGoods = new Goods(11, "Футболка мужская", 1200, 15);
+        Goods shirtGoods = new Goods(12, "Рубашка мужская", 3500, 8);
+        Goods jeansGoods = new Goods(13, "Джинсы мужские", 4000, 5);
+        Goods costumeGoods = new Goods(14, "Костюм мужской", 8500, 2);
+        Goods wintercoatGoods = new Goods(15, "Куртка мужская зимняя", 7000, 4);
+
+        // Обувь
+        Goods womenshoesGoods = new Goods(16, "Туфли женские", 4500, 9);
+        Goods mensneakersGoods = new Goods(17, "Кроссовки мужские", 3500, 12);
+        Goods womenbootsGoods = new Goods(18, "Ботинки женские осенние", 6000, 5);
+        Goods winterbootsGoods = new Goods(19, "Сапоги женские зимние", 9000, 3);
+        Goods menbootsGoods = new Goods(20, "Кеды мужские", 2500, 15);
+
+        // Аксессуары
+        Goods enbeltGoods = new Goods(21, "Ремень мужской", 1000, 20);
+        Goods womenhatGoods = new Goods(22, "Шапка женская", 1500, 10);
+        Goods womenscarfGoods = new Goods(23, "Шарф женский", 1200, 15);
+        Goods glovesGoods = new Goods(24, "Перчатки женские", 1500, 8);
+        Goods jewelryGoods = new Goods(25, "Бижутерия", 500, 30);
     }
 
     public void createGoods (Catalogs catalogName, int id, String name, double price, int count) {
