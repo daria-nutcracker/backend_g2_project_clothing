@@ -14,6 +14,10 @@ public class Users {
     private char gender;
     private LocalDate birthDate;
 
+    public String toString() {
+        return String.format("User[id=%d, firstName='%s', lastName='%s', email='%s', gender='%c', birthDate='%s']",
+                id, firstName, lastName, email, gender, birthDate);
+    }
     public Users() {
     }
 
@@ -77,6 +81,7 @@ public class Users {
 
 /*public class Main {
     public static void main(String[] args) {
+
         User user1 = new User(1, "Митя", "Фомин", "fomin@mail.com", 'M', LocalDate.of(1990, 5, 15));
         User user2 = new User(2, "Катя", "Иванова", "kate@mail.com", 'F', LocalDate.of(1995, 9, 22));
         User user3 = new User(3, "Дима", "Алексеев", "dimitry@mail.com", 'M', LocalDate.of(1988, 2, 7));
