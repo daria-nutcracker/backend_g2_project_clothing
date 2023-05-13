@@ -4,6 +4,7 @@ import org.example.models.Catalogs;
 import org.example.models.Goods;
 
 import java.io.*;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
@@ -59,5 +60,22 @@ public class Main {
         System.out.println(womenClothes.toString());
         womenClothes.deleteGoods(testGoods);
         System.out.println(womenClothes.toString());
+    }
+
+    public void createGoods (Catalogs catalogName, int id, String name, double price, int count) {
+        Goods newGood = new Goods(id, name, price, count);
+        catalogName.addGoods(newGood);
+    }
+
+    public void readGoods (ArrayList<Goods> goods, int id) {
+        for (Goods good : goods)
+            if (good.getId() == id) {
+                System.out.println(good.toString());
+                break;
+            }
+    }
+
+    public void updateGoods (ArrayList<Goods> goods, int id) {
+
     }
 }
