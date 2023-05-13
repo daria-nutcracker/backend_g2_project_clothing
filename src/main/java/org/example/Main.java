@@ -7,6 +7,47 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class Main {
+    public static void createGoods (Catalogs catalogName, int id, String name, double price, int count) {
+        Goods newGood = new Goods(id, name, price, count);
+        catalogName.addGoods(newGood);
+        System.out.println("Товар: " + newGood.toString() + " был создан.");
+
+    }
+
+    public static void readGoods (ArrayList<Goods> goods, int id) {
+        for (Goods good : goods)
+            if (good.getId() == id) {
+                System.out.println("Товар: " + good.toString() + " был найден.");
+                break;
+            }
+    }
+
+    public static void updateCountGoods (ArrayList<Goods> goods, int id, int count) {
+        for (Goods good : goods)
+            if (good.getId() == id) {
+                good.setCount(count);
+                System.out.println("Количество товара: " + good.toString() + " был изменено.");
+                break;
+            }
+    }
+
+    public static void updatePriceGoods (ArrayList<Goods> goods, int id, double price) {
+        for (Goods good : goods)
+            if (good.getId() == id) {
+                good.setPrice(price);
+                System.out.println("Цена товара: " + good.toString() + " был изменена.");
+                break;
+            }
+    }
+    public static void deleteGoods (Catalogs catalog, int id) {
+        for (Goods good : catalog.getGoods())
+            if (good.getId() == id) {
+                System.out.println("Удаляем товар: " + good.toString());
+                catalog.deleteGoods(good);
+                break;
+            }
+    }
+
     public static void main(String[] args) {
         System.out.println("Привет! Я - интернет-магазин.");
         Catalogs childrenClothes = new Catalogs(1, "Детская одежда");
@@ -130,22 +171,7 @@ public class Main {
         accessoires.addGoods(jewelryGoods);
 
         System.out.println(accessoires.toString());
-    }
-
-    public void createGoods (Catalogs catalogName, int id, String name, double price, int count) {
-        Goods newGood = new Goods(id, name, price, count);
-        catalogName.addGoods(newGood);
-    }
-
-    public void readGoods (ArrayList<Goods> goods, int id) {
-        for (Goods good : goods)
-            if (good.getId() == id) {
-                System.out.println(good.toString());
-                break;
-            }
-    }
-
-    public void updateGoods (ArrayList<Goods> goods, int id) {
-
+       // deleteGoods(accessoires, 25);
+      //  System.out.println(accessoires.toString());
     }
 }
