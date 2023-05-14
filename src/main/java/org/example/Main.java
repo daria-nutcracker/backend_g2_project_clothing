@@ -5,13 +5,10 @@ import org.example.models.Goods;
 import org.example.models.Users;
 
 import java.io.*;
-import java.util.ArrayList;
-
+import java.util.*;
 
 
 import java.time.LocalDate;
-import java.util.List;
-import java.util.Random;
 
 public class Main {
     // Вспомогательный метод для получения полного имени пользователя (имя + фамилия)
@@ -140,7 +137,7 @@ public class Main {
         }
         System.out.println("Пользователь с id=" + id + " не найден");
     }
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         System.out.println("Привет! Я - интернет-магазин.");
 
         ArrayList <Catalogs> categories = new ArrayList<Catalogs>();
@@ -154,11 +151,6 @@ public class Main {
         categories.add(shoes);
         Catalogs accessoires = new Catalogs(5, "Аксессуары");
         categories.add(accessoires);
-
-        System.out.println(categories.get(0));
-        deleteCatalogs(categories, 1);
-        System.out.println(categories.get(0));
-
 
         try{
             File file = new File( "goods.txt");
@@ -312,6 +304,21 @@ public class Main {
                     + " положил из раздела каталога id = " + categoryId + ", '" + categories.get(categoryId-1).getName()
                     + "' товар id = " + categories.get(categoryId-1).getGoods().get(productId).getId() + " '" + categories.get(categoryId-1).getGoods().get(productId).getName() + "'");
 
+        }
+
+
+        HashMap<Integer, Users> tabPasswordUsers = new HashMap<>();
+        for (Users user : userList) {
+            tabPasswordUsers.put(9020456 + user.getId(), user);
+        }
+
+        try (FileWriter fileWriter = new FileWriter("users.txt")) {
+           for (Map.Entry<Integer,Users> element : tabPasswordUsers.entrySet()){
+                System.out.println(element);
+                fileWriter.write(element.toString()+"\n");
+            }
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
         }
     }
 }
