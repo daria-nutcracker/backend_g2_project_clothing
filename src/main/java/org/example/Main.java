@@ -102,6 +102,44 @@ public class Main {
                 break;
             }
     }
+
+    public static ArrayList <Users> userList = new ArrayList<Users>();
+    public static void createUser(Users user) {
+        userList.add(user);
+        System.out.println("Пользователь " + user.getFirstName() + " " + user.getLastName() + " id=" + user.getId() + " создан в базе данных");
+    }
+
+    public static void findUserById(int id) {
+        for (Users user : userList) {
+            if (user.getId() == id) {
+                System.out.println("Пользователь " + user.getFirstName() + " " + user.getLastName() + " id=" + user.getId() + " был найден");
+                return;
+            }
+        }
+        System.out.println("Пользователь с id=" + id + " не найден");
+    }
+
+    public static void updateUser(Users user) {
+        for (int i = 0; i < userList.size(); i++) {
+            if (userList.get(i).getId() == user.getId()) {
+                userList.set(i, user);
+                System.out.println("Пользователь " + user.getFirstName() + " " + user.getLastName() + " id=" + user.getId() + " изменена дата рождения");
+                return;
+            }
+        }
+        System.out.println("Пользователь с id=" + user.getId() + " не найден");
+    }
+
+    public static void deleteUser(int id) {
+        for (int i = 0; i < userList.size(); i++) {
+            if (userList.get(i).getId() == id) {
+                Users deletedUser = userList.remove(i);
+                System.out.println("Пользователь " + deletedUser.getFirstName() + " " + deletedUser.getLastName() + " id=" + deletedUser.getId() + " удален из базы данных");
+                return;
+            }
+        }
+        System.out.println("Пользователь с id=" + id + " не найден");
+    }
     public static void main(String[] args) {
         System.out.println("Привет! Я - интернет-магазин.");
 
@@ -245,49 +283,22 @@ public class Main {
       //  System.out.println(accessoires.toString());
 
 
-        ArrayList <Users> users = new ArrayList<Users>();
-        Users user1 = new Users(1, "Митя", "Фомин", "fomin@mail.com", 'M', LocalDate.of(1990, 5, 15));
-        users.add(user1);
-        Users user2 = new Users(2, "Катя", "Иванова", "kate@mail.com", 'F', LocalDate.of(1995, 9, 22));
-        users.add(user2);
-        Users user3 = new Users(3, "Дима", "Алексеев", "dimitry@mail.com", 'M', LocalDate.of(1988, 2, 7));
-        users.add(user3);
-        Users user4 = new Users(4, "Лилия", "Шварц", "Schwarz@mail.com", 'F', LocalDate.of(1998, 12, 30));
-        users.add(user4);
-        Users user5 = new Users(5, "Миша", "Ли", "machaellee@mail.com", 'M', LocalDate.of(1992, 4, 2));
-        users.add(user5);
 
-        System.out.println("User 1: " + user1.getFirstName() + " " + user1.getLastName() + ", email: " + user1.getEmail() + ", gender: " + user1.getGender() + ", birth date: " + user1.getBirthDate());
-        System.out.println("User 2: " + user2.getFirstName() + " " + user2.getLastName() + ", email: " + user2.getEmail() + ", gender: " + user2.getGender() + ", birth date: " + user2.getBirthDate());
-        System.out.println("User 3: " + user3.getFirstName() + " " + user3.getLastName() + ", email: " + user3.getEmail() + ", gender: " + user3.getGender() + ", birth date: " + user3.getBirthDate());
-        System.out.println("User 4: " + user4.getFirstName() + " " + user4.getLastName() + ", email: " + user4.getEmail() + ", gender: " + user4.getGender() + ", birth date: " + user4.getBirthDate());
-        System.out.println("User 5: " + user5.getFirstName() + " " + user5.getLastName() + ", email: " + user5.getEmail() + ", gender: " + user5.getGender() + ", birth date: " + user5.getBirthDate());
 
-        // кодирование позиций из корзины и разделов каталога для демонстрации
-        /*
-        int[] cartItems = {3, 6, 8, 11, 14, 17, 20, 23, 26, 29};
-        int[] catalogSections = {1, 3, 5, 7, 9, 11, 13, 15, 17, 19};
+        userList.add(new Users(1, "Митя", "Фомин", "fomin@mail.com", 'M', LocalDate.of(1990, 5, 15)));
+        userList.add(new Users(2, "Катя", "Иванова", "kate@mail.com", 'F', LocalDate.of(1995, 9, 22)));
+        userList.add(new Users(3, "Дима", "Алексеев", "dimitry@mail.com", 'M', LocalDate.of(1988, 2, 7)));
+        userList.add(new Users(4, "Лилия", "Шварц", "Schwarz@mail.com", 'F', LocalDate.of(1998, 12, 30)));
+        userList.add(new Users(5, "Миша", "Ли", "machaellee@mail.com", 'M', LocalDate.of(1992, 4, 2)));
 
-        for (int i = 0; i < cartItems.length; i++) {
-            int userId = i + 1;
-            int itemId = cartItems[i];
-            int sectionId = catalogSections[i];
 
-            System.out.println("User " + userId + " " + getUserFullName(userId) + " added item with id=" + itemId + " from catalog section with id=" + sectionId);
-        }
-        */
+        createUser(new Users(6, "Аня", "Козлова", LocalDate.of(1999, 8, 10))); // создание пользователя
+        findUserById(2); // поиск пользователя по id
+        updateUser(new Users(2, "Катя", "Иванова", LocalDate.of(1995, 9, 22).plusYears(1))); // обновление информации о пользователе
+        deleteUser(3); // удаление пользователя по id
 
-/*
-        String[] users = {"Митя Фомин", "Катя Иванова", "Дима Алексеев", "Лилия Шварц", "Миша Ли"};
-         String[] categories = {"Мужская одежда", "Женская одежда", "Детская одежда", "Обувь", "Аксессуары"};
-        String[] products = {"Футболка мужская”; “Рубашка мужская”; Джинсы мужские", "Костюм мужской",
-                "Куртка мужская зимняя", "Платье женское вечернее", "Платье женское коктейльное",
-                "Платье женское офисное", "Блузка женская", "Юбка женская", "Платье для девочки",
-                "Штанишки для мальчика", " Пальто детское демисезонное для девочки", "Футболка детская для мальчика",
-                "Куртка детская утепленная для мальчика", "Туфли женские", "Кроссовки мужские",
-                "Ботинки женские осенние", "Сапоги женские зимние", "Шапка женская",
-                "Шарф женский", "Перчатки женские", "Бижутерия"};
-*/
+        for (int j = 0; j < userList.size(); j++)
+            System.out.println("User : " + userList.get(j).toString());
 
         Random random = new Random();
 
@@ -297,64 +308,10 @@ public class Main {
             int productId = productId = random.nextInt(4); // генерируем случайный id товара от 0 до 4
 
 
-            System.out.println("User " + users.get(userId-1).getId() + " " + users.get(userId-1).getFirstName() + " " + users.get(userId-1).getLastName()
+            System.out.println("User " + userList.get(userId-1).getId() + " " + userList.get(userId-1).getFirstName() + " " + userList.get(userId-1).getLastName()
                     + " положил из раздела каталога id = " + categoryId + ", '" + categories.get(categoryId-1).getName()
                     + "' товар id = " + categories.get(categoryId-1).getGoods().get(productId).getId() + " '" + categories.get(categoryId-1).getGoods().get(productId).getName() + "'");
 
         }
-    }
-}
-
-public class Main {
-    private static List<Users> userList = new ArrayList<>();
-
-    public static void main(String[] args) {
-        userList.add(new Users(1, "Митя", "Фомин", LocalDate.of(1990, 5, 15)));
-        userList.add(new Users(2, "Катя", "Иванова", LocalDate.of(1995, 9, 22)));
-        userList.add(new Users(3, "Дима", "Алексеев", LocalDate.of(1988, 2, 7)));
-        userList.add(new Users(4, "Лилия", "Шварц", LocalDate.of(1998, 12, 30)));
-        userList.add(new Users(5, "Миша", "Ли", LocalDate.of(1992, 4, 2)));
-
-        createUser(new Users(6, "Аня", "Козлова", LocalDate.of(1999, 8, 10))); // создание пользователя
-        findUserById(2); // поиск пользователя по id
-        updateUser(new Users(2, "Катя", "Иванова", LocalDate.of(1995, 9, 22).plusYears(1))); // обновление информации о пользователе
-        deleteUser(3); // удаление пользователя по id
-    }
-
-    public static void createUser(Users user) {
-        userList.add(user);
-        System.out.println("Пользователь " + user.getFirstName() + " " + user.getLastName() + " id=" + user.getId() + " создан в базе данных");
-    }
-
-    public static void findUserById(int id) {
-        for (Users user : userList) {
-            if (user.getId() == id) {
-                System.out.println("Пользователь " + user.getFirstName() + " " + user.getLastName() + " id=" + user.getId() + " был найден");
-                return;
-            }
-        }
-        System.out.println("Пользователь с id=" + id + " не найден");
-    }
-
-    public static void updateUser(Users user) {
-        for (int i = 0; i < userList.size(); i++) {
-            if (userList.get(i).getId() == user.getId()) {
-                userList.set(i, user);
-                System.out.println("Пользователь " + user.getFirstName() + " " + user.getLastName() + " id=" + user.getId() + " изменена дата рождения");
-                return;
-            }
-        }
-        System.out.println("Пользователь с id=" + user.getId() + " не найден");
-    }
-
-    public static void deleteUser(int id) {
-        for (int i = 0; i < userList.size(); i++) {
-            if (userList.get(i).getId() == id) {
-                Users deletedUser = userList.remove(i);
-                System.out.println("Пользователь " + deletedUser.getFirstName() + " " + deletedUser.getLastName() + " id=" + deletedUser.getId() + " удален из базы данных");
-                return;
-            }
-        }
-        System.out.println("Пользователь с id=" + id + " не найден");
     }
 }

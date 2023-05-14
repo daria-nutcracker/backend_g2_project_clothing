@@ -14,6 +14,13 @@ public class Users {
     private char gender;
     private LocalDate birthDate;
 
+    public Users(int id, String firstName, String lastName, LocalDate birthDate) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
+    }
+
 
     @Override
     public String toString() {
