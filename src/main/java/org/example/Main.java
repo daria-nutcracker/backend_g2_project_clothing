@@ -95,10 +95,10 @@ public class Main {
             }
     }
     public static void deleteCatalogs (ArrayList<Catalogs> catalogs, int id) {
-        for (Catalogs catalog : catalogs)
-            if (catalog.getId() == id) {
-                System.out.println("Удаляем каталог: " + catalog.toString());
-                catalogs.remove(catalog);
+        for (int i = 0; i < catalogs.size();i++)
+            if (catalogs.get(i).getId() == id) {
+                System.out.println("Удаляем каталог: " + catalogs.get(i).toString());
+                catalogs.remove(i);
                 break;
             }
     }
@@ -156,7 +156,7 @@ public class Main {
         categories.add(accessoires);
 
         System.out.println(categories.get(0));
-        deleteCatalogs(categories, 0);
+        deleteCatalogs(categories, 1);
         System.out.println(categories.get(0));
 
 
