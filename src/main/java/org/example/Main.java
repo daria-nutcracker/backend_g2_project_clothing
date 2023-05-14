@@ -76,6 +76,14 @@ public class Main {
         return catalog;
     }
 
+    public static void readCatalog (ArrayList<Catalogs> catalogs, int id) {
+        for (Catalogs catalog : catalogs)
+            if (catalog.getId() == id) {
+                System.out.println("Каталог: " + catalog.toString() + " был найден.");
+                break;
+            }
+    }
+
     public static void main(String[] args) {
         System.out.println("Привет! Я - интернет-магазин.");
 
