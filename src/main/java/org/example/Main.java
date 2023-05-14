@@ -70,6 +70,12 @@ public class Main {
             }
     }
 
+    public static Catalogs createCatalog (int id, String name) {
+        Catalogs catalog = new Catalogs(id, name);
+        System.out.println("Каталог: " + catalog.toString() + " был создан.");
+        return catalog;
+    }
+
     public static void main(String[] args) {
         System.out.println("Привет! Я - интернет-магазин.");
 
