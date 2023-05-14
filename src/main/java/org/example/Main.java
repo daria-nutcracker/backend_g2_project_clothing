@@ -72,14 +72,21 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("Привет! Я - интернет-магазин.");
-        Catalogs childrenClothes = new Catalogs(1, "Детская одежда");
+
+        ArrayList <Catalogs> categories = new ArrayList<Catalogs>();
+         Catalogs childrenClothes = new Catalogs(1, "Детская одежда");
+        categories.add(childrenClothes);
         Catalogs womenClothes = new Catalogs(2, "Женская одежда");
+        categories.add(womenClothes);
         Catalogs menClothes = new Catalogs(3, "Мужская одежда");
+        categories.add(menClothes);
         Catalogs shoes = new Catalogs(4, "Обувь");
+        categories.add(shoes);
         Catalogs accessoires = new Catalogs(5, "Аксессуары");
+        categories.add(accessoires);
 
         try{
-            File file = new File("C:\\Users\\AlyaZagatskaya\\IdeaProjects\\backend3_g2_project_clothing\\src", "goods.txt");
+            File file = new File( "goods.txt");
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
             String line = br.readLine();
@@ -124,84 +131,94 @@ public class Main {
         womenClothes.deleteGoods(testGoods);
         System.out.println(womenClothes.toString());
 */
+        int i = 0;
         // Детская одежда
         Goods girlDressGoods = new Goods(1, "Платье для девочки", 2000, 7);
-        childrenClothes.addGoods(girlDressGoods);
+        categories.get(i).addGoods(girlDressGoods);
         Goods boypantsGoods = new Goods(2, "Штанишки для мальчика", 1500, 12);
-        childrenClothes.addGoods(boypantsGoods);
+        categories.get(i).addGoods(boypantsGoods);
         Goods girlcoatGoods = new Goods(3, "Пальто детское демисезонное для девочки", 3500, 5);
-        childrenClothes.addGoods(girlcoatGoods);
+        categories.get(i).addGoods(girlcoatGoods);
         Goods boyt_shirtGoods = new Goods(4, "Футболка детская для мальчика", 800, 10);
-        childrenClothes.addGoods(boyt_shirtGoods);
+        categories.get(i).addGoods(boyt_shirtGoods);
         Goods boyjacketGoods = new Goods(5, "Куртка детская утепленная для мальчика", 4500, 3);
-        childrenClothes.addGoods(boyjacketGoods);
+        categories.get(i).addGoods(boyjacketGoods);
 
-        System.out.println(childrenClothes.toString());
+        System.out.println(categories.get(i).toString());
+        i++;
 
         // Женская одежда
         Goods eveningDressGoods = new Goods(6, "Платье женское вечернее", 7000, 4);
-        womenClothes.addGoods(eveningDressGoods);
+        categories.get(i).addGoods(eveningDressGoods);
         Goods cocktailDressGoods = new Goods(7, "Платье женское коктейльное", 5000, 6);
-        womenClothes.addGoods(cocktailDressGoods);
+        categories.get(i).addGoods(cocktailDressGoods);
         Goods officeDressGoods = new Goods(8, "Платье женское офисное", 3500, 8);
-        womenClothes.addGoods(officeDressGoods);
+        categories.get(i).addGoods(officeDressGoods);
         Goods blouseGoods = new Goods(9, "Блузка женская", 2500, 10);
-        womenClothes.addGoods(blouseGoods);
+        categories.get(i).addGoods(blouseGoods);
         Goods skirtGoods = new Goods(10, "Юбка женская", 3000, 7);
-        womenClothes.addGoods(skirtGoods);
+        categories.get(i).addGoods(skirtGoods);
 
-        System.out.println(womenClothes.toString());
+        System.out.println(categories.get(i).toString());
+        i++;
 
         // Мужская одежда
         Goods t_shirtGoods = new Goods(11, "Футболка мужская", 1200, 15);
-        menClothes.addGoods(t_shirtGoods);
+        categories.get(i).addGoods(t_shirtGoods);
         Goods shirtGoods = new Goods(12, "Рубашка мужская", 3500, 8);
-        menClothes.addGoods(shirtGoods);
+        categories.get(i).addGoods(shirtGoods);
         Goods jeansGoods = new Goods(13, "Джинсы мужские", 4000, 5);
-        menClothes.addGoods(jeansGoods);
+        categories.get(i).addGoods(jeansGoods);
         Goods costumeGoods = new Goods(14, "Костюм мужской", 8500, 2);
-        menClothes.addGoods(costumeGoods);
+        categories.get(i).addGoods(costumeGoods);
         Goods wintercoatGoods = new Goods(15, "Куртка мужская зимняя", 7000, 4);
-        menClothes.addGoods(wintercoatGoods);
+        categories.get(i).addGoods(wintercoatGoods);
 
-        System.out.println(menClothes.toString());
-
+        System.out.println(categories.get(i).toString());
+        i++;
         // Обувь
         Goods womenshoesGoods = new Goods(16, "Туфли женские", 4500, 9);
-        shoes.addGoods(womenshoesGoods);
+        categories.get(i).addGoods(womenshoesGoods);
         Goods mensneakersGoods = new Goods(17, "Кроссовки мужские", 3500, 12);
-        shoes.addGoods(mensneakersGoods);
+        categories.get(i).addGoods(mensneakersGoods);
         Goods womenbootsGoods = new Goods(18, "Ботинки женские осенние", 6000, 5);
-        shoes.addGoods(womenbootsGoods);
+        categories.get(i).addGoods(womenbootsGoods);
         Goods winterbootsGoods = new Goods(19, "Сапоги женские зимние", 9000, 3);
-        shoes.addGoods(winterbootsGoods);
+        categories.get(i).addGoods(winterbootsGoods);
         Goods menbootsGoods = new Goods(20, "Кеды мужские", 2500, 15);
-        shoes.addGoods(menbootsGoods);
+        categories.get(i).addGoods(menbootsGoods);
 
-        System.out.println(shoes.toString());
+        System.out.println(categories.get(i).toString());
+        i++;
 
         // Аксессуары
         Goods enbeltGoods = new Goods(21, "Ремень мужской", 1000, 20);
-        accessoires.addGoods(enbeltGoods);
+        categories.get(i).addGoods(enbeltGoods);
         Goods womenhatGoods = new Goods(22, "Шапка женская", 1500, 10);
-        accessoires.addGoods(womenhatGoods);
+        categories.get(i).addGoods(womenhatGoods);
         Goods womenscarfGoods = new Goods(23, "Шарф женский", 1200, 15);
-        accessoires.addGoods(womenscarfGoods);
+        categories.get(i).addGoods(womenscarfGoods);
         Goods glovesGoods = new Goods(24, "Перчатки женские", 1500, 8);
-        accessoires.addGoods(glovesGoods);
+        categories.get(i).addGoods(glovesGoods);
         Goods jewelryGoods = new Goods(25, "Бижутерия", 500, 30);
-        accessoires.addGoods(jewelryGoods);
+        categories.get(i).addGoods(jewelryGoods);
 
-        System.out.println(accessoires.toString());
+        System.out.println(categories.get(i).toString());
        // deleteGoods(accessoires, 25);
       //  System.out.println(accessoires.toString());
 
 
+        ArrayList <Users> users = new ArrayList<Users>();
         Users user1 = new Users(1, "Митя", "Фомин", "fomin@mail.com", 'M', LocalDate.of(1990, 5, 15));
+        users.add(user1);
         Users user2 = new Users(2, "Катя", "Иванова", "kate@mail.com", 'F', LocalDate.of(1995, 9, 22));
+        users.add(user2);
         Users user3 = new Users(3, "Дима", "Алексеев", "dimitry@mail.com", 'M', LocalDate.of(1988, 2, 7));
+        users.add(user3);
         Users user4 = new Users(4, "Лилия", "Шварц", "Schwarz@mail.com", 'F', LocalDate.of(1998, 12, 30));
+        users.add(user4);
         Users user5 = new Users(5, "Миша", "Ли", "machaellee@mail.com", 'M', LocalDate.of(1992, 4, 2));
+        users.add(user5);
 
         System.out.println("User 1: " + user1.getFirstName() + " " + user1.getLastName() + ", email: " + user1.getEmail() + ", gender: " + user1.getGender() + ", birth date: " + user1.getBirthDate());
         System.out.println("User 2: " + user2.getFirstName() + " " + user2.getLastName() + ", email: " + user2.getEmail() + ", gender: " + user2.getGender() + ", birth date: " + user2.getBirthDate());
@@ -210,6 +227,7 @@ public class Main {
         System.out.println("User 5: " + user5.getFirstName() + " " + user5.getLastName() + ", email: " + user5.getEmail() + ", gender: " + user5.getGender() + ", birth date: " + user5.getBirthDate());
 
         // кодирование позиций из корзины и разделов каталога для демонстрации
+        /*
         int[] cartItems = {3, 6, 8, 11, 14, 17, 20, 23, 26, 29};
         int[] catalogSections = {1, 3, 5, 7, 9, 11, 13, 15, 17, 19};
 
@@ -220,10 +238,11 @@ public class Main {
 
             System.out.println("User " + userId + " " + getUserFullName(userId) + " added item with id=" + itemId + " from catalog section with id=" + sectionId);
         }
+        */
 
-
+/*
         String[] users = {"Митя Фомин", "Катя Иванова", "Дима Алексеев", "Лилия Шварц", "Миша Ли"};
-        String[] categories = {"Мужская одежда", "Женская одежда", "Детская одежда", "Обувь", "Аксессуары"};
+         String[] categories = {"Мужская одежда", "Женская одежда", "Детская одежда", "Обувь", "Аксессуары"};
         String[] products = {"Футболка мужская”; “Рубашка мужская”; Джинсы мужские", "Костюм мужской",
                 "Куртка мужская зимняя", "Платье женское вечернее", "Платье женское коктейльное",
                 "Платье женское офисное", "Блузка женская", "Юбка женская", "Платье для девочки",
@@ -231,16 +250,19 @@ public class Main {
                 "Куртка детская утепленная для мальчика", "Туфли женские", "Кроссовки мужские",
                 "Ботинки женские осенние", "Сапоги женские зимние", "Шапка женская",
                 "Шарф женский", "Перчатки женские", "Бижутерия"};
-
+*/
 
         Random random = new Random();
 
-        for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
             int userId = random.nextInt(5) + 1; // генерируем случайный id юзера от 1 до 5
             int categoryId = random.nextInt(5) + 1; // генерируем случайный id категории от 1 до 5
-            int productId = random.nextInt(25) + 1; // генерируем случайный id товара от 1 до 25
+            int productId = productId = random.nextInt(4); // генерируем случайный id товара от 0 до 4
 
-            System.out.println("User " + userId + " " + users[userId-1] + " положил в корзину товар с id=" + productId + ", '" + products[productId-1] + "' из раздела каталога id=" + categoryId + " '" + categories[categoryId-1] + "'");
+
+            System.out.println("User " + users.get(userId-1).getId() + " " + users.get(userId-1).getFirstName() + " " + users.get(userId-1).getLastName()
+                    + " положил из раздела каталога id = " + categoryId + ", '" + categories.get(categoryId-1).getName()
+                    + "' товар id = " + categories.get(categoryId-1).getGoods().get(productId).getId() + " '" + categories.get(categoryId-1).getGoods().get(productId).getName() + "'");
 
         }
     }
