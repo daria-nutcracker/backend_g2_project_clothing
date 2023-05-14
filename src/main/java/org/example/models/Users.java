@@ -14,6 +14,8 @@ public class Users {
     private char gender;
     private LocalDate birthDate;
 
+
+    @Override
     public String toString() {
         return String.format("User[id=%d, firstName='%s', lastName='%s', email='%s', gender='%c', birthDate='%s']",
                 id, firstName, lastName, email, gender, birthDate);
