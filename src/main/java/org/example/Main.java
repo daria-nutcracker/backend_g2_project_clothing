@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Random;
 
 public class Main {
@@ -300,5 +301,59 @@ public class Main {
                     + "' товар id = " + categories.get(categoryId-1).getGoods().get(productId).getId() + " '" + categories.get(categoryId-1).getGoods().get(productId).getName() + "'");
 
         }
+    }
+}
+
+public class Main {
+    private static List<Users> userList = new ArrayList<>();
+
+    public static void main(String[] args) {
+        userList.add (new Users(1, "Митя", "Фомин", LocalDate.of(1990, 5, 15)));
+        userList.add(new Users(2, "Катя", "Иванова", LocalDate.of(1995, 9, 22)));
+        userList.add(new Users(3, "Дима", "Алексеев", LocalDate.of(1988, 2, 7)));
+        userList.add(new Users(4, "Лилия", "Шварц", LocalDate.of(1998, 12, 30)));
+        userList.add(new Users(5, "Миша", "Ли", LocalDate.of(1992, 4, 2)));
+
+        createUser(new Users(6, "Аня", "Козлова", LocalDate.of(1999, 8, 10))); // создание пользователя
+        findUserById(2); // поиск пользователя по id
+        updateUser(new Users(2, "Катя", "Иванова", LocalDate.of(1995, 9, 22).plusYears(1))); // обновление информации о пользователе
+        deleteUser(3); // удаление пользователя по id
+    }
+
+    public static void createUser(Users user) {
+        userList.add(user);
+        System.out.println("Пользователь " + user.getFirstName() + " " + user.getLastName() + " id=" + user.getId() + " создан в базе данных");
+    }
+
+    public static void findUserById(int id) {
+        for (Users user : userList) {
+            if (user.getId() == id) {
+                System.out.println("Пользователь " + user.getFirstName() + " " + user.getLastName() + " id=" + user.getId() + " был найден");
+                return;
+            }
+        }
+        System.out.println("Пользователь с id=" + id + " не найден");
+    }
+
+    public static void updateUser(Users user) {
+        for (int i = 0; i < userList.size(); i++) {
+            if (userList.get(i).getId() == user.getId()) {
+                userList.set(i, user);
+                System.out.println("Пользователь " + user.getFirstName() + " " + user.getLastName() + " id=" + user.getId() + " изменена дата рождения");
+                return;
+            }
+        }
+        System.out.println("Пользователь с id=" + user.getId() + " не найден");
+    }
+
+    public static void deleteUser(int id) {
+        for (int i = 0; i < userList.size(); i++) {
+            if (userList.get(i).getId() == id) {
+                Users deletedUser = userList.remove(i);
+                System.out.println("Пользователь " + deletedUser.getFirstName() + " " + deletedUser.getLastName() + " id=" + deletedUser.getId() + " удален из базы данных");
+                return;
+            }
+        }
+        System.out.println("Пользователь с id=" + id + " не найден");
     }
 }
