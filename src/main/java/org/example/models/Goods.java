@@ -53,6 +53,6 @@ public class Goods {
     @Override
     public String toString() {
         String formattedPrice = new DecimalFormat("#0.00").format(price);
-        return "Товар: " + name + " id = " + id + " стоимостью " + formattedPrice + " в количестве " + count;
+        return name + " id = " + id + " стоимостью " + formattedPrice + " в количестве " + count;
     }
 }

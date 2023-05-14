@@ -140,6 +140,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         System.out.println("Привет! Я - интернет-магазин.");
 
+        //Создать 5 каталогов
         ArrayList <Catalogs> categories = new ArrayList<Catalogs>();
          Catalogs childrenClothes = new Catalogs(1, "Детская одежда");
         categories.add(childrenClothes);
@@ -152,6 +153,14 @@ public class Main {
         Catalogs accessoires = new Catalogs(5, "Аксессуары");
         categories.add(accessoires);
 
+        //crud операции для каталогов
+        categories.add( createCatalog ( 6, "Белье"));
+        readCatalog (categories, 6);
+        updateCatalogs (categories, 6, "Нижнее белье");
+        readCatalog (categories, 6);
+        deleteCatalogs(categories, 6);
+
+        //дополнительная задача - чтение из файла
         try{
             File file = new File( "goods.txt");
             FileReader fr = new FileReader(file);
@@ -198,6 +207,8 @@ public class Main {
         womenClothes.deleteGoods(testGoods);
         System.out.println(womenClothes.toString());
 */
+
+        //Добавление всех товаров в каталоги. Вывод на экран
         int i = 0;
         // Детская одежда
         Goods girlDressGoods = new Goods(1, "Платье для девочки", 2000, 7);
@@ -271,12 +282,18 @@ public class Main {
         categories.get(i).addGoods(jewelryGoods);
 
         System.out.println(categories.get(i).toString());
-       // deleteGoods(accessoires, 25);
-      //  System.out.println(accessoires.toString());
+
+        //crud операции для Товаров
+        createGoods(categories.get(i), 26, "Шляпка женская", 1340, 5);
+        readGoods(categories.get(i).getGoods(), 26);
+        updateCountGoods(categories.get(i).getGoods(), 26, 4);
+         deleteGoods(categories.get(i), 26);
 
 
 
 
+
+         //Создание юзеров
         userList.add(new Users(1, "Митя", "Фомин", "fomin@mail.com", 'M', LocalDate.of(1990, 5, 15)));
         userList.add(new Users(2, "Катя", "Иванова", "kate@mail.com", 'F', LocalDate.of(1995, 9, 22)));
         userList.add(new Users(3, "Дима", "Алексеев", "dimitry@mail.com", 'M', LocalDate.of(1988, 2, 7)));
@@ -284,16 +301,19 @@ public class Main {
         userList.add(new Users(5, "Миша", "Ли", "machaellee@mail.com", 'M', LocalDate.of(1992, 4, 2)));
 
 
+        //crud операции над юзерами
         createUser(new Users(6, "Аня", "Козлова", LocalDate.of(1999, 8, 10))); // создание пользователя
         findUserById(2); // поиск пользователя по id
         updateUser(new Users(2, "Катя", "Иванова", LocalDate.of(1995, 9, 22).plusYears(1))); // обновление информации о пользователе
         deleteUser(3); // удаление пользователя по id
 
+        //вывод юзеров на экран
         for (int j = 0; j < userList.size(); j++)
             System.out.println("User : " + userList.get(j).toString());
 
-        Random random = new Random();
 
+        //задача вывода информации при добавлении в корзину
+        Random random = new Random();
         for (int j = 0; j < 5; j++) {
             int userId = random.nextInt(5) + 1; // генерируем случайный id юзера от 1 до 5
             int categoryId = random.nextInt(5) + 1; // генерируем случайный id категории от 1 до 5
@@ -307,6 +327,7 @@ public class Main {
         }
 
 
+        //дополнительная задача на добавление юзеров в файл
         HashMap<Integer, Users> tabPasswordUsers = new HashMap<>();
         for (Users user : userList) {
             tabPasswordUsers.put(9020456 + user.getId(), user);
