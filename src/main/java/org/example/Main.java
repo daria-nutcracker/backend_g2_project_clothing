@@ -8,6 +8,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Random;
@@ -282,12 +283,11 @@ public class Main {
         }
     }
 }
-
 public class Main {
     private static List<Users> userList = new ArrayList<>();
 
     public static void main(String[] args) {
-        userList.add (new Users(1, "Митя", "Фомин", LocalDate.of(1990, 5, 15)));
+        userList.add(new Users(1, "Митя", "Фомин", LocalDate.of(1990, 5, 15)));
         userList.add(new Users(2, "Катя", "Иванова", LocalDate.of(1995, 9, 22)));
         userList.add(new Users(3, "Дима", "Алексеев", LocalDate.of(1988, 2, 7)));
         userList.add(new Users(4, "Лилия", "Шварц", LocalDate.of(1998, 12, 30)));
