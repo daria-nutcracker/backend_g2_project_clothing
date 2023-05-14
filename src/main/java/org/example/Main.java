@@ -84,6 +84,22 @@ public class Main {
             }
     }
 
+    public static void updateCatalogs (ArrayList<Catalogs> catalogs, int id, String newName) {
+        for (Catalogs catalog : catalogs)
+            if (catalog.getId() == id) {
+                catalog.setName(newName);
+                System.out.println("Каталог: " + catalog.toString() + " был изменен.");
+                break;
+            }
+    }
+    public static void deleteCatalogs (ArrayList<Catalogs> catalogs, int id) {
+        for (Catalogs catalog : catalogs)
+            if (catalog.getId() == id) {
+                System.out.println("Удаляем каталог: " + catalog.toString());
+                catalogs.remove(catalog);
+                break;
+            }
+    }
     public static void main(String[] args) {
         System.out.println("Привет! Я - интернет-магазин.");
 
@@ -98,6 +114,11 @@ public class Main {
         categories.add(shoes);
         Catalogs accessoires = new Catalogs(5, "Аксессуары");
         categories.add(accessoires);
+
+        System.out.println(categories.get(0));
+        deleteCatalogs(categories, 0);
+        System.out.println(categories.get(0));
+
 
         try{
             File file = new File( "goods.txt");
