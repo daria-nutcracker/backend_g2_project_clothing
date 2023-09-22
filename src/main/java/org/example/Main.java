@@ -10,6 +10,7 @@ import java.util.*;
 
 import java.time.LocalDate;
 
+
 public class Main {
     // Вспомогательный метод для получения полного имени пользователя (имя + фамилия)
     private static String getUserFullName(int userId) {
@@ -28,14 +29,15 @@ public class Main {
                 return "";
         }
     }
-    public static void createGoods (Catalogs catalogName, int id, String name, double price, int count) {
+
+    public static void createGoods(Catalogs catalogName, int id, String name, double price, int count) {
         Goods newGood = new Goods(id, name, price, count);
         catalogName.addGoods(newGood);
         System.out.println("Товар: " + newGood.toString() + " был создан.");
 
     }
 
-    public static void readGoods (ArrayList<Goods> goods, int id) {
+    public static void readGoods(ArrayList<Goods> goods, int id) {
         for (Goods good : goods)
             if (good.getId() == id) {
                 System.out.println("Товар: " + good.toString() + " был найден.");
@@ -43,7 +45,7 @@ public class Main {
             }
     }
 
-    public static void updateCountGoods (ArrayList<Goods> goods, int id, int count) {
+    public static void updateCountGoods(ArrayList<Goods> goods, int id, int count) {
         for (Goods good : goods)
             if (good.getId() == id) {
                 good.setCount(count);
@@ -52,7 +54,7 @@ public class Main {
             }
     }
 
-    public static void updatePriceGoods (ArrayList<Goods> goods, int id, double price) {
+    public static void updatePriceGoods(ArrayList<Goods> goods, int id, double price) {
         for (Goods good : goods)
             if (good.getId() == id) {
                 good.setPrice(price);
@@ -60,7 +62,8 @@ public class Main {
                 break;
             }
     }
-    public static void deleteGoods (Catalogs catalog, int id) {
+
+    public static void deleteGoods(Catalogs catalog, int id) {
         for (Goods good : catalog.getGoods())
             if (good.getId() == id) {
                 System.out.println("Удаляем товар: " + good.toString());
@@ -69,13 +72,13 @@ public class Main {
             }
     }
 
-    public static Catalogs createCatalog (int id, String name) {
+    public static Catalogs createCatalog(int id, String name) {
         Catalogs catalog = new Catalogs(id, name);
         System.out.println("Каталог: " + catalog.toString() + " был создан.");
         return catalog;
     }
 
-    public static void readCatalog (ArrayList<Catalogs> catalogs, int id) {
+    public static void readCatalog(ArrayList<Catalogs> catalogs, int id) {
         for (Catalogs catalog : catalogs)
             if (catalog.getId() == id) {
                 System.out.println("Каталог: " + catalog.toString() + " был найден.");
@@ -83,7 +86,7 @@ public class Main {
             }
     }
 
-    public static void updateCatalogs (ArrayList<Catalogs> catalogs, int id, String newName) {
+    public static void updateCatalogs(ArrayList<Catalogs> catalogs, int id, String newName) {
         for (Catalogs catalog : catalogs)
             if (catalog.getId() == id) {
                 catalog.setName(newName);
@@ -91,8 +94,9 @@ public class Main {
                 break;
             }
     }
-    public static void deleteCatalogs (ArrayList<Catalogs> catalogs, int id) {
-        for (int i = 0; i < catalogs.size();i++)
+
+    public static void deleteCatalogs(ArrayList<Catalogs> catalogs, int id) {
+        for (int i = 0; i < catalogs.size(); i++)
             if (catalogs.get(i).getId() == id) {
                 System.out.println("Удаляем каталог: " + catalogs.get(i).toString());
                 catalogs.remove(i);
@@ -100,7 +104,8 @@ public class Main {
             }
     }
 
-    public static ArrayList <Users> userList = new ArrayList<Users>();
+    public static ArrayList<Users> userList = new ArrayList<Users>();
+
     public static void createUser(Users user) {
         userList.add(user);
         System.out.println("Пользователь " + user.getFirstName() + " " + user.getLastName() + " id=" + user.getId() + " создан в базе данных");
@@ -137,12 +142,13 @@ public class Main {
         }
         System.out.println("Пользователь с id=" + id + " не найден");
     }
+
     public static void main(String[] args) throws IOException {
         System.out.println("Привет! Я - интернет-магазин.");
 
         //Создать 5 каталогов
-        ArrayList <Catalogs> categories = new ArrayList<Catalogs>();
-         Catalogs childrenClothes = new Catalogs(1, "Детская одежда");
+        ArrayList<Catalogs> categories = new ArrayList<Catalogs>();
+        Catalogs childrenClothes = new Catalogs(1, "Детская одежда");
         categories.add(childrenClothes);
         Catalogs womenClothes = new Catalogs(2, "Женская одежда");
         categories.add(womenClothes);
@@ -154,15 +160,15 @@ public class Main {
         categories.add(accessoires);
 
         //crud операции для каталогов
-        categories.add( createCatalog ( 6, "Белье"));
-        readCatalog (categories, 6);
-        updateCatalogs (categories, 6, "Нижнее белье");
-        readCatalog (categories, 6);
+        categories.add(createCatalog(6, "Белье"));
+        readCatalog(categories, 6);
+        updateCatalogs(categories, 6, "Нижнее белье");
+        readCatalog(categories, 6);
         deleteCatalogs(categories, 6);
 
         //дополнительная задача - чтение из файла
-        try{
-            File file = new File( "goods.txt");
+        try {
+            File file = new File("goods.txt");
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
             String line = br.readLine();
@@ -171,19 +177,15 @@ public class Main {
             while (line != null) {
                 String[] goodsDetails = line.split("_");
                 Goods newStuff = new Goods(index, goodsDetails[0], Integer.parseInt(goodsDetails[1]), Integer.parseInt(goodsDetails[2]));
-                if(index <= 5) {
+                if (index <= 5) {
                     childrenClothes.addGoods(newStuff);
-                }
-                else if(index <= 10) {
+                } else if (index <= 10) {
                     womenClothes.addGoods(newStuff);
-                }
-                else if(index <= 15) {
+                } else if (index <= 15) {
                     menClothes.addGoods(newStuff);
-                }
-                else if(index <= 20) {
+                } else if (index <= 20) {
                     shoes.addGoods(newStuff);
-                }
-                else if(index <= 25) {
+                } else if (index <= 25) {
                     accessoires.addGoods(newStuff);
                 }
                 line = br.readLine();
@@ -195,7 +197,7 @@ public class Main {
             System.out.println(shoes.toString());
             System.out.println(accessoires.toString());
 
-        }catch(FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
@@ -270,16 +272,11 @@ public class Main {
         i++;
 
         // Аксессуары
-        Goods enbeltGoods = new Goods(21, "Ремень мужской", 1000, 20);
-        categories.get(i).addGoods(enbeltGoods);
-        Goods womenhatGoods = new Goods(22, "Шапка женская", 1500, 10);
-        categories.get(i).addGoods(womenhatGoods);
-        Goods womenscarfGoods = new Goods(23, "Шарф женский", 1200, 15);
-        categories.get(i).addGoods(womenscarfGoods);
-        Goods glovesGoods = new Goods(24, "Перчатки женские", 1500, 8);
-        categories.get(i).addGoods(glovesGoods);
-        Goods jewelryGoods = new Goods(25, "Бижутерия", 500, 30);
-        categories.get(i).addGoods(jewelryGoods);
+        categories.get(i).addGoods(new Goods(21, "Ремень мужской", 1000, 20));
+        categories.get(i).addGoods(new Goods(22, "Шапка женская", 1500, 10));
+        categories.get(i).addGoods(new Goods(23, "Шарф женский", 1200, 15));
+        categories.get(i).addGoods(new Goods(24, "Перчатки женские", 1500, 8));
+        categories.get(i).addGoods(new Goods(25, "Бижутерия", 500, 30));
 
         System.out.println(categories.get(i).toString());
 
@@ -287,13 +284,10 @@ public class Main {
         createGoods(categories.get(i), 26, "Шляпка женская", 1340, 5);
         readGoods(categories.get(i).getGoods(), 26);
         updateCountGoods(categories.get(i).getGoods(), 26, 4);
-         deleteGoods(categories.get(i), 26);
+        deleteGoods(categories.get(i), 26);
 
 
-
-
-
-         //Создание юзеров
+        //Создание юзеров
         userList.add(new Users(1, "Митя", "Фомин", "fomin@mail.com", 'M', LocalDate.of(1990, 5, 15)));
         userList.add(new Users(2, "Катя", "Иванова", "kate@mail.com", 'F', LocalDate.of(1995, 9, 22)));
         userList.add(new Users(3, "Дима", "Алексеев", "dimitry@mail.com", 'M', LocalDate.of(1988, 2, 7)));
@@ -320,9 +314,9 @@ public class Main {
             int productId = productId = random.nextInt(4); // генерируем случайный id товара от 0 до 4
 
 
-            System.out.println("User " + userList.get(userId-1).getId() + " " + userList.get(userId-1).getFirstName() + " " + userList.get(userId-1).getLastName()
-                    + " положил из раздела каталога id = " + categoryId + ", '" + categories.get(categoryId-1).getName()
-                    + "' товар id = " + categories.get(categoryId-1).getGoods().get(productId).getId() + " '" + categories.get(categoryId-1).getGoods().get(productId).getName() + "'");
+            System.out.println("User " + userList.get(userId - 1).getId() + " " + userList.get(userId - 1).getFirstName() + " " + userList.get(userId - 1).getLastName()
+                    + " положил из раздела каталога id = " + categoryId + ", '" + categories.get(categoryId - 1).getName()
+                    + "' товар id = " + categories.get(categoryId - 1).getGoods().get(productId).getId() + " '" + categories.get(categoryId - 1).getGoods().get(productId).getName() + "'");
 
         }
 
@@ -334,9 +328,9 @@ public class Main {
         }
 
         try (FileWriter fileWriter = new FileWriter("users.txt")) {
-           for (Map.Entry<Integer,Users> element : tabPasswordUsers.entrySet()){
+            for (Map.Entry<Integer, Users> element : tabPasswordUsers.entrySet()) {
                 System.out.println(element);
-                fileWriter.write(element.toString()+"\n");
+                fileWriter.write(element.toString() + "\n");
             }
         } catch (IOException e) {
             System.err.println(e.getMessage());
